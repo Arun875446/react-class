@@ -1,0 +1,147 @@
+https://pokeapi.co/api/v2/pokemon?limit=15
+
+
+https://dog.ceo/api/breeds/image/random
+
+
+..............
+
+
+import { useEffect, useState } from "react";
+import axios from "axios";
+import Card from "@mui/material/Card";
+import CardMedia from "@mui/material/CardMedia";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
+import { Button } from "@mui/material";
+import reactGif from "../assets/reactt.gif";
+import errorImg from "../assets/some.gif";
+
+const Marvel = () => {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+
+  const dataFetch = () => {
+    axios
+
+      .get("https://dog.ceo/api/breeds/image/random")
+      .then((response) => setData(response.data.message))
+      .catch((error) => {
+        console.log(error);
+        setError(true);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+  useEffect(() => {
+    dataFetch();
+  }, []);
+
+  return (
+    <div
+      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+    >
+      <h1>Random Dog Image</h1>
+
+      {loading && <img width={500} height={400} src={reactGif} alt="" />}
+
+      {error && <img src={errorImg} alt="" />}
+
+      {!loading && !error && (
+        <>
+          <Card sx={{ maxWidth: 345, margin: 2, boxShadow: 3 }}>
+            <CardMedia
+              component="img"
+              height="300"
+              image={data}
+              alt="Random Dog"
+              sx={{ objectFit: "cover" }}
+            />
+            <CardContent>
+              <Typography variant="h6" component="div">
+                Random Dog Image
+              </Typography>
+            </CardContent>
+          </Card>
+
+          <Button variant="contained" color="primary" onClick={dataFetch}>
+            Click Me
+          </Button>
+        </>
+      )}
+    </div>
+  );
+};
+
+export default Marvel;
+
+
+.......................
+
+import { useEffect, useState } from "react";
+import "./VideoGame.css";
+
+const VideoGame = () => {
+  const [gameTitle, setGameTitle] = useState("");
+  const [searchedGames, setSearchedGames] = useState([]);
+  const [gameDeals, setGameDeals] = useState([]);
+
+  const searchGame = () => {
+    fetch(
+      `https://www.cheapshark.com/api/1.0/games?title=${gameTitle}&limit=3`
+    ).then((res) => {
+      res.json().then((data) => {
+        setSearchedGames(data);
+      });
+    });
+  };
+
+  useEffect(() => {
+    fetch(
+      // different link.
+      `https://www.cheapshark.com/api/1.0/deals?storeID=1&upperPrice=10&pageSize=3`
+    ).then((res) => {
+      res.json().then((data) => {
+        setGameDeals(data);
+      });
+    });
+  }, []);
+
+  return (
+    <div className="App">
+      <div className="searchSection">
+        <h1>Search for a game</h1>
+        <input
+          type="text"
+          onChange={(e) => setGameTitle(e.target.value)}
+          placeholder="Minecraft..."
+        />
+        <button onClick={searchGame}>Search gameTitle</button>
+        <div className="games">
+          {searchedGames.map((game, key) => (
+            <div className="game" key={key}>
+              {game.external}
+              <img src={game.thumb} alt={game.title} />
+              {game.cheapest}
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="dealsSection">
+        <h1>Latest Deals</h1>
+        {gameDeals.map((game) => (
+          <div className="game" id="deals" key={game.title}>
+            <h2>{game.title}</h2>
+            <p>Normal price:{game.normalPrice}</p>
+            <p>Sale price:{game.salePrice}</p>
+            <h3>You save: {game.savings.substr(0, 2)}%</h3>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default VideoGame;

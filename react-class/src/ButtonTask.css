@@ -1,0 +1,65 @@
+.container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+p {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+button:focus {
+  outline: none;
+}
+
+.change-state-button.true-state {
+  background-color: #4caf50; /* Green */
+  color: white;
+}
+
+.change-state-button.false-state {
+  background-color: #f44336; /* Red */
+  color: white;
+}
+
+.reveal-beast-button.true-state {
+  background-color: #4caf50; /* Green */
+  color: white;
+}
+
+.reveal-beast-button.false-state {
+  background-color: #f44336; /* Red */
+  color: white;
+}
+
+.reveal-false-beast-button.true-state {
+  background-color: #4caf50; /* Green */
+  color: white;
+}
+
+.reveal-false-beast-button.false-state {
+  background-color: #f44336; /* Red */
+  color: white;
+}
+
+img {
+  margin-top: 20px;
+  width: 200px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

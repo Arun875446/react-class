@@ -1,0 +1,18 @@
+{
+  "pages": [
+    {
+      "heading": "Call of Duty",
+      "paragraph": "Call of Duty is a 2003 first-person shooter game developed by Infinity Ward and published by Activision. .",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEJ7NP6TKi35LTUvlJCA0e_UX7YZQOrZzuLw&s"
+    },
+    {
+      "heading": "React JS",
+      "paragraph": "React is a free and open-source front-end JavaScript library for building user interfaces based on components by Facebook .",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuUH5PsyMQlcIJA4BnBAQQvqwLTLsIqxlvOw&s"
+    },
+    {
+      "heading": "Javascript",
+      "paragraph": "JavaScript, often abbreviated as JS, is a programming language and core technology of the Web."
+    }
+  ]
+}
